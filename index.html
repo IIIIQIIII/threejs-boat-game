@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#071827" />
+    <meta name="description" content="A lightweight 3D boat racing game built with Three.js." />
+    <title>Azure Run · 3D Boat Game</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main id="game" aria-label="3D boat game">
+      <canvas id="scene"></canvas>
+      <div class="vignette"></div>
+
+      <section id="start-screen" class="panel show">
+        <p class="eyebrow">THREE.JS BOAT EXPERIENCE</p>
+        <h1>AZURE<br /><span>RUN</span></h1>
+        <p class="lead">穿过全部光环，避开礁石，在海风里刷新纪录。</p>
+        <button id="start-btn" class="primary">开始航行 <span>→</span></button>
+        <div class="controls-hint"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>或方向键驾驶</span></div>
+      </section>
+
+      <header id="hud" class="hidden">
+        <div class="stat"><small>CHECKPOINT</small><strong><span id="checkpoint">0</span> / 8</strong></div>
+        <div class="stat center"><small>TIME</small><strong id="timer">00:00.00</strong></div>
+        <div class="stat right"><small>HULL</small><div class="health"><i id="health-bar"></i></div></div>
+      </header>
+
+      <div id="speedometer" class="hidden"><strong id="speed">0</strong><span>KNOTS</span></div>
+      <div id="message" role="status"></div>
+
+      <section id="finish-screen" class="panel">
+        <p class="eyebrow">COURSE COMPLETE</p>
+        <h2>航行完成</h2>
+        <div class="result-time" id="final-time">00:00.00</div>
+        <p id="record-text">新的最佳纪录</p>
+        <button id="restart-btn" class="primary">再次挑战 <span>↻</span></button>
+      </section>
+
+      <div id="touch-controls" class="hidden" aria-label="触屏控制">
+        <div class="touch-group"><button data-key="left">←</button><button data-key="right">→</button></div>
+        <div class="touch-group"><button data-key="brake">↓</button><button class="throttle" data-key="up">↑</button></div>
+      </div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
