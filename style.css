@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;600&display=swap');
+
+:root { font-family: Inter, system-ui, sans-serif; color: #f4fbff; background: #071827; font-synthesis: none; }
+* { box-sizing: border-box; }
+html, body, #game { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+body { background: #071827; }
+canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
+.vignette { pointer-events:none; position:absolute; inset:0; background:linear-gradient(180deg,rgba(2,12,20,.25),transparent 30%,transparent 70%,rgba(2,12,20,.42)),radial-gradient(circle,transparent 45%,rgba(1,9,16,.24)); }
+.panel { position:absolute; inset:0; z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:24px; text-align:center; background:linear-gradient(90deg,rgba(3,18,29,.75),rgba(3,18,29,.18),rgba(3,18,29,.75)); opacity:0; visibility:hidden; transform:translateY(12px); transition:.45s ease; }
+.panel.show { opacity:1; visibility:visible; transform:none; }
+.eyebrow { margin:0 0 14px; color:#73e8ff; font:600 12px/1 Inter; letter-spacing:.35em; }
+h1 { margin:0; font:800 clamp(76px,15vw,176px)/.68 'Barlow Condensed',sans-serif; letter-spacing:-.045em; text-shadow:0 8px 50px rgba(0,0,0,.35); }
+h1 span { color:transparent; -webkit-text-stroke:2px #8becff; }
+.lead { max-width:480px; margin:35px 0 26px; color:#c3d8e2; font-size:14px; letter-spacing:.04em; }
+.primary { min-width:200px; padding:15px 22px; border:1px solid rgba(134,237,255,.72); color:#062131; background:#8cecff; font:700 14px Inter; letter-spacing:.08em; cursor:pointer; box-shadow:0 9px 35px rgba(43,209,237,.22); transition:.2s; }
+.primary:hover { transform:translateY(-2px); background:white; box-shadow:0 12px 42px rgba(43,209,237,.38); }
+.primary span { margin-left:20px; }
+.controls-hint { display:flex; align-items:center; gap:5px; margin-top:25px; color:#8da5b0; font-size:11px; }
+kbd { min-width:23px; padding:5px; border:1px solid #637984; border-radius:3px; background:rgba(6,27,41,.75); color:white; font:600 10px Inter; }
+.controls-hint span { margin-left:8px; }
+#hud { position:absolute; z-index:3; top:0; left:0; width:100%; display:grid; grid-template-columns:1fr 1fr 1fr; padding:28px 34px; transition:.3s; }
+.stat { display:flex; flex-direction:column; gap:5px; }.stat.center { align-items:center; }.stat.right { align-items:flex-end; }
+.stat small { color:#a9c2cd; font-size:9px; letter-spacing:.22em; }.stat strong { font:700 24px 'Barlow Condensed'; letter-spacing:.06em; }
+.health { width:105px; height:5px; margin-top:7px; background:rgba(255,255,255,.2); transform:skewX(-18deg); }.health i { display:block; width:100%; height:100%; background:#6ce9f7; transition:.2s; }
+#speedometer { position:absolute; z-index:3; right:35px; bottom:28px; display:flex; flex-direction:column; align-items:flex-end; text-shadow:0 2px 8px #000; }
+#speedometer strong { font:700 52px/.8 'Barlow Condensed'; } #speedometer span { color:#8cecff; font:700 9px Inter; letter-spacing:.2em; }
+#message { position:absolute; z-index:4; top:27%; left:50%; translate:-50% 0; color:#fff; font:700 26px 'Barlow Condensed'; letter-spacing:.1em; text-shadow:0 3px 15px #001; opacity:0; transition:.25s; white-space:nowrap; }
+#message.pop { animation:pop 1.25s ease; }
+@keyframes pop { 0%{opacity:0;transform:scale(.8)} 15%,70%{opacity:1;transform:scale(1)} 100%{opacity:0;transform:translateY(-18px)} }
+h2 { margin:0; font:800 clamp(55px,10vw,105px) 'Barlow Condensed'; }.result-time { color:#88eaff; font:700 42px 'Barlow Condensed'; }.panel#finish-screen p:not(.eyebrow) { color:#aec3cc; margin:4px 0 24px; }
+.hidden { opacity:0 !important; visibility:hidden !important; }
+#touch-controls { display:none; position:absolute; z-index:4; bottom:22px; left:18px; right:18px; justify-content:space-between; transition:.3s; }
+.touch-group { display:flex; gap:10px; }.touch-group button { width:58px; height:58px; border:1px solid rgba(255,255,255,.38); border-radius:50%; color:white; background:rgba(2,20,32,.4); font-size:21px; backdrop-filter:blur(7px); touch-action:none; }.touch-group button:active,.touch-group button.active { background:rgba(107,229,248,.5); }.touch-group .throttle { border-color:#73e8ff; }
+@media (pointer:coarse),(max-width:700px){ #touch-controls:not(.hidden){display:flex} #speedometer{right:20px;bottom:98px} #hud{padding:20px 18px}.stat strong{font-size:20px}.lead{margin-top:30px} }
